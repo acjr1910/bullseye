@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isAlertVisible: Bool = false
+    
     var body: some View {
         VStack {
             Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
@@ -27,8 +30,14 @@ struct ContentView: View {
                 Text("100")
                     .bold()
             }
-            Button("Hit me"){
+            Button("Hit me") {
                 print("Hello SwiftUI!")
+                self.isAlertVisible = true;
+            }
+            .alert("Hello", isPresented: $isAlertVisible) {
+                Button("Awesome!") {}
+            } message: {
+                Text("This is my first pop-up")
             }
         }
     }
